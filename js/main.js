@@ -68,7 +68,7 @@ if(JSON.parse(localStorage.getItem('cart')))
 
 
 // Interval based call to reload cart item listing, thus updating cart times
-setInterval(prepareCartItems, 10000);
+//setInterval(prepareCartItems, 10000);
 
 
 
