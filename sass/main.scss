@@ -1,0 +1,623 @@
+@import '_variables.scss';
+@import '_animations.scss';
+
+@mixin centerPositionedElement($elementWidth) {
+	margin-left: -($elementWidth / 2);
+	left: 50%;
+}
+
+@mixin squareElement($size) {
+	width: $size;
+	height: $size;
+}
+
+@mixin boxShadow() {
+	box-shadow: 0px 0px 3px rgba($color-black-dark, .2);
+}
+
+@mixin boxGlow() {
+	box-shadow: 0px 0px 3px rgba($color-gray-light, .2);
+}
+
+
+
+// --------------------------------------------------
+// Global Styles
+// --------------------------------------------------
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: $main-bg-color;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.4em;
+}
+
+img {
+	max-width: 100%;
+}
+
+button {
+	outline: none;
+}
+
+.content-section {
+	padding: $vertical-gutter 0;
+}
+
+.hide-element {
+	display: none;
+}
+
+.add-margin-bottom {
+	margin-bottom: 60px;
+}
+
+
+
+// --------------------------------------------------
+// Header
+// --------------------------------------------------
+header {
+	width: 100%;
+	padding: 10px 0;
+	background-color: $color-mint-dark;
+	color: $color-gray-light;
+
+	.logo {
+		width: 60px;
+		height: auto;
+		display: inline-block;
+	}
+
+	.logo-text {
+		display: inline-block;
+		vertical-align: top;
+		padding-left: 10px;
+		padding: 15px 0 0 10px;
+		margin: 0;
+	}
+
+	.logo-link {
+		color: $color-gray-light;
+		text-decoration: none;
+
+		&:hover {
+			color: $color-gray-dark;
+			text-decoration: none;
+		}
+	}
+
+	nav {
+		display: inline-block;
+		float: right;
+
+		#menuIcon {
+			display: none;
+			font-size: 1.4em;
+			padding: 19px;
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+
+			li {
+				padding: 20px;
+				display: inline-block;
+
+				a {
+					color: $color-gray-light;
+					text-decoration: none;
+
+					&:hover,
+					&:active {
+						color: $color-gray-dark;
+						text-decoration: none;
+					}
+				}
+
+				&:hover {
+					background-color: $color-mint-light;
+				}
+			}
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Hero
+// --------------------------------------------------
+.hero {
+	width: 100%;
+	padding: 200px 0;
+	background-image: 
+		linear-gradient(
+			to bottom,
+			rgba($color-mint-light, .5) 0%,
+			rgba($color-mint-dark, .5) 100%
+		),
+		url('../images/shirt-hero-gray.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	color: $color-gray-light;
+	text-align: center;
+
+	h1 {
+		text-shadow: 0px 0px 10px rgba($color-black-dark, .5);
+		text-transform: uppercase;
+		font-size: 2.2em;
+	}
+
+	button {
+		color: $color-gray-light;
+		text-transform: uppercase;
+		font-weight: bold;
+		background-color: rgba($color-black-dark, .15);
+		border: 3px solid $color-gray-light;
+		padding: 10px 15px;
+
+		&:hover {
+			color: $color-grapefruit-dark;
+			background-color: rgba($color-gray-light, .15);
+			border-color: $color-grapefruit-dark;
+		}
+	}
+
+	&.about {
+		padding: 60px 0;
+	    background-image: linear-gradient(to bottom, rgba(88, 206, 177, 0.5) 0%, rgba(55, 188, 155, 0.5) 100%), url(../images/about-hero.jpg);
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    background-position: 0px -87px;
+	    background-attachment: fixed;
+	}
+
+	&.contact {
+		padding: 60px 0;
+	    background-image: linear-gradient(to bottom, rgba(88, 206, 177, 0.5) 0%, rgba(55, 188, 155, 0.5) 100%), url(../images/contact-hero.jpg);
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    background-position: 0px -135px;
+	    background-attachment: fixed;
+	}
+}
+
+
+
+// --------------------------------------------------
+// Featured
+// --------------------------------------------------
+.featured {
+
+	h2 {
+		margin-bottom: 40px;
+	}
+	
+	.featured-item {
+		margin-bottom: 40px;
+		position: relative;
+		overflow: hidden;
+
+		&:hover .featured-description {
+			bottom: 0;
+			opacity: 1;
+		}
+
+		.featured-shirt {
+			@include boxShadow();
+		}
+
+		.featured-description {
+			width: 100%;
+			background-color: rgba($color-mint-dark, .85);
+			color: $color-gray-light;
+			padding: 10px;
+			position: absolute;
+			bottom: -500px;
+			left: 0;
+			opacity: 0;
+			transition: all .5s;
+			
+
+			h3,
+			p {
+				margin: 10px 0;
+			}
+
+			.view-details {
+				color: $color-gray-light;
+				display: inline-block;
+				margin-top: 10px;
+
+				button {
+					background-color: rgba($color-mint-dark, .95);
+					padding: 0 10px;
+					border: none;
+				}
+
+				p {
+					display: inline-block;
+					padding: 0 10px;
+				}
+
+				&:hover {
+					@include boxGlow();
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Coupon
+// --------------------------------------------------
+.coupon {
+	width: 100%;
+	padding: 100px 0;
+	background-image: 
+		linear-gradient(
+			to bottom,
+			rgba($color-mint-light, .5) 0%,
+			rgba($color-mint-dark, .5) 100%
+		),
+		url('../images/horizon.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	color: $color-gray-light;
+	text-align: center;
+
+	h1 {
+		text-shadow: 0px 0px 10px rgba($color-black-dark, .5);
+		text-transform: uppercase;
+		font-size: 2.2em;
+	}
+
+	button {
+		color: $color-gray-light;
+		text-transform: uppercase;
+		background-color: $color-black-light;
+		border: 3px solid $color-gray-light;
+		padding: 10px 15px;
+	}
+}
+
+
+
+// --------------------------------------------------
+// Footer
+// --------------------------------------------------
+footer {
+	width: 100%;
+	padding: 60px 0;
+	background-color: $color-black-dark;
+	color: $color-gray-light;
+
+	.logo {
+		width: 40%;
+		height: auto;
+	}
+
+	a {
+		color: $color-mint-dark;
+
+		&:hover,
+		&:active {
+			color: $color-mint-light;
+		}
+	}
+
+	p {
+		padding: 2px 0;
+		margin: 0;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+
+		li {
+			padding: 2px 0;
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// About
+// --------------------------------------------------
+.about {
+	font-size: 1.2em;
+	line-height: 1.4em;
+
+	h2 {
+		padding: 40px 0 20px;
+		margin: 0;
+	}
+}
+
+
+
+// --------------------------------------------------
+// Products
+// --------------------------------------------------
+.products {
+	
+	&.coupon {
+		background-position: 0px -180px;
+	}
+}
+
+
+
+// --------------------------------------------------
+// Contact
+// --------------------------------------------------
+.contact {
+
+	.store-location {
+		padding-top: 40px;
+	}
+	
+	.text-input-element {
+		margin-bottom: 20px;
+
+		&:focus {
+			.text-label {
+				display: none;
+			}
+		}
+		
+		.text-label,
+		.message-label {
+			color: $color-black-light;
+			font-weight: normal;
+			font-size: 0.8em;
+			display: block;
+		}
+
+		.text-input,
+		.message-input {
+			width: 100%;
+			padding: 5px 10px;
+			border: 1px solid $color-black-dark;
+			outline: none;
+
+			&:focus {
+				color: $color-black-dark;
+				border: 1px solid $color-mint-dark;
+			}
+		}
+
+		.message-input {
+			height: 150px;
+		}
+
+		button {
+			padding: 5px 10px;
+			background-color: transparent;
+			border: 3px solid $color-grapefruit-dark;
+			color: $color-grapefruit-dark;
+			font-weight: bold;
+			float: right;
+
+			&:hover {
+				border: 3px solid $color-grapefruit-light;
+				color: $color-grapefruit-light;
+			}
+		}
+	}
+}
+
+
+
+//--------------------------------------------------
+// Cart
+//--------------------------------------------------
+.item-cart {
+	min-width: 350px;
+	padding: 10px 40px;
+	background-color: $color-black-light;
+	color: $main-bg-color;
+	font-size: 14px;
+	position: fixed;
+	right: 20px;
+	bottom: 0;
+
+	h3 {
+		font-size: 1.4em;
+		font-weight: bold;
+		padding-top: 5px;
+		margin: 0;
+	}
+
+	.items {
+		padding: 15px 0;
+		border-top: 1px solid rgba($main-bg-color, .1);
+		border-bottom: 1px solid rgba($main-bg-color, .1);
+		margin: 15px 0;
+
+		div {
+			padding: 2px 0;
+
+			&.titles {
+				font-weight: bold;
+				padding-bottom: 10px;
+			}
+
+			p {
+				width: 130px;
+				display: inline-block;
+
+				&.item-remove {
+					width: 25px;
+				}
+
+				&.item-color {
+					width: 120px;
+				}
+
+				&.item-price {
+					width: 100px;
+					text-align: right;
+					float: right;
+				}
+
+				&.remove-all {
+					width: 100px;
+				    padding: 10px 0 0 0;
+				    display: block;
+				    text-align: left;
+				}
+			}
+
+			a {
+				color: rgba($main-bg-color, 0.6);
+			}
+
+		}
+	}
+
+	.totals {
+		float: right;
+
+		div {
+			display: block;
+
+			p {
+				min-width: 100px;
+				text-align: right;
+				display: inline-block;
+			}
+		}
+	}
+
+	#minimizeCart,
+	.items span,
+	.totals span {
+		float: right;
+	}
+
+	#minimizeCart {
+		cursor: pointer;
+	}
+}
+
+
+
+// --------------------------------------------------
+// Responsive Styles
+// --------------------------------------------------
+@media screen and (max-width: 990px) {
+
+	header {
+
+		nav {
+			position: relative;
+			z-index: 100;
+
+			#menuIcon {
+				display: inline-block;
+			}
+
+			#menuContent {
+				display: none;
+				background-color: $color-black-dark;
+				padding: 0;
+				position: absolute;
+				top: 65px;
+				right: 0;
+			}
+
+			ul {
+
+				li {
+					min-width: 180px;
+					padding: 20px;
+				}
+			}
+
+			&:hover {
+
+				#menuIcon {
+					background-color: $color-mint-light;
+				}
+
+				#menuContent {
+					display:block;
+				}
+			}
+		}
+	}
+
+	.featured {
+
+		.featured-item {
+
+			.featured-description {
+
+				.description {
+					display: none;
+				}
+			}
+		}
+	}
+
+	footer {
+
+		nav,
+		.logo,
+		.resources,
+		.support {
+			margin-bottom: 40px;
+		}
+	}
+
+	.item-cart {
+		right: 0;
+
+		.items {
+
+			div {
+
+				p {
+					width: 95px;
+
+					&.item-color,
+					&.item-date {
+						display: none;
+					}
+
+					&.item-remove {
+						width: 50px;
+					}
+				}
+			}
+		}
+	}
+}

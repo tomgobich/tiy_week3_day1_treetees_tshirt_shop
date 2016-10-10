@@ -1,0 +1,18 @@
+// Site Colors
+$main-bg-color: #fefefe;
+$blue-color: #69addc;
+$warning: #CC3C27;
+
+$color-black-dark: #323133;
+$color-black-light: lighten($color-black-dark, 10);
+$color-gray-dark: #E6E9ED;
+$color-gray-light: lighten($color-gray-dark, 10);
+$color-mint-dark: #37BC9B;
+$color-mint-light: lighten($color-mint-dark, 10);
+$color-grapefruit-dark: #DA4453;
+$color-grapefruit-light: lighten($color-grapefruit-dark, 10);
+
+
+// Site Components
+$vertical-gutter: 60px;
+$border-size: 2px;
