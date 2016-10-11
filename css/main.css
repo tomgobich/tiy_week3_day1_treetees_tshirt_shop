@@ -56,7 +56,7 @@ header {
   color: white; }
   header .logo {
     width: 60px;
-    height: auto;
+    height: 60px;
     display: inline-block; }
   header .logo-text {
     display: inline-block;
