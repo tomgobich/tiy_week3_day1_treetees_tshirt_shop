@@ -1,7 +1,7 @@
 // Glboal Constants / Variables
 const TAX_RATE = 0.065;
 var myStorage = localStorage;
-var minimizeCartStatus = false;
+var minimizeCartStatus = JSON.parse(localStorage.getItem('isCartMinimized'));
 
 
 
@@ -59,6 +59,11 @@ itemCart.classList.add('hide-element');
 
 
 
+// Interval based call to reload cart item listing, thus updating cart times
+setInterval(prepareCartItems, 10000);
+
+
+
 // If local storage for cart exists, load local storage
 if(JSON.parse(localStorage.getItem('cart')))
 {
@@ -67,8 +72,17 @@ if(JSON.parse(localStorage.getItem('cart')))
 
 
 
-// Interval based call to reload cart item listing, thus updating cart times
-setInterval(prepareCartItems, 10000);
+// Was cart minimized on previous state?
+if(minimizeCartStatus)
+{
+	// Yes, minimize it
+	setCartToMinimized();
+}
+else 
+{
+	// No, expand it
+	setCartToExpand();
+}
 
 
 
@@ -79,20 +93,42 @@ minimizeCart.addEventListener('click', function()
 	if(!minimizeCartStatus)
 	{
 		// No, minimize it
-		itemList.classList.add('hide-element');
-		itemTotals.classList.add('hide-element');
-		minimizeCart.innerHTML = "+";
-		minimizeCartStatus = true;
+		setCartToMinimized();
 	}
 	else 
 	{
 		// Yes, expand it
-		itemList.classList.remove('hide-element');
-		itemTotals.classList.remove('hide-element');
-		minimizeCart.innerHTML = "-";
-		minimizeCartStatus = false;
+		setCartToExpand();
 	}
+
+	localStorage.setItem('isCartMinimized', JSON.stringify(minimizeCartStatus));
 });
+
+
+
+// --------------------------------------------------
+// Minimizes the cart
+// --------------------------------------------------
+function setCartToMinimized()
+{
+	itemList.classList.add('hide-element');
+	itemTotals.classList.add('hide-element');
+	minimizeCart.innerHTML = "+";
+	minimizeCartStatus = true;
+}
+
+
+
+// --------------------------------------------------
+// Expands the cart
+// --------------------------------------------------
+function setCartToExpand()
+{
+	itemList.classList.remove('hide-element');
+	itemTotals.classList.remove('hide-element');
+	minimizeCart.innerHTML = "-";
+	minimizeCartStatus = false;
+}
 
 
 
