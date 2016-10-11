@@ -101,6 +101,7 @@ minimizeCart.addEventListener('click', function()
 		setCartToExpand();
 	}
 
+	// save in localStorage
 	localStorage.setItem('isCartMinimized', JSON.stringify(minimizeCartStatus));
 });
 
