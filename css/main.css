@@ -162,7 +162,7 @@ header {
       display: inline-block;
       margin-top: 10px; }
       .featured .featured-item .featured-description .view-details button {
-        background-color: rgba(55, 188, 155, 0.95);
+        background-color: rgba(218, 68, 83, 0.95);
         padding: 0 10px;
         border: none; }
       .featured .featured-item .featured-description .view-details p {
@@ -339,6 +339,8 @@ footer {
       display: block; }
   .featured .featured-item .featured-description .description {
     display: none; }
+  .featured .featured-item .featured-description .view-details button {
+    font-size: 0.8em; }
   footer nav,
   footer .logo,
   footer .resources,

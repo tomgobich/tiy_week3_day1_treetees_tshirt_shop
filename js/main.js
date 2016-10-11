@@ -182,7 +182,7 @@ function setCartStatus(itemId, itemObject, timestamp)
 	if(itemArrayIndex === -1 ) 
 	{
 		// No, add item to cart
-		itemId.innerHTML = '<i class="fa fa-shopping-cart" aria-hidden="true"></i><p>Remove Cart</p>';
+		itemId.innerHTML = '<i class="fa fa-shopping-cart" aria-hidden="true"></i><p>Remove from Cart</p>';
 		cart.push({item: itemObject, element: itemId, date: timestamp});
 		console.log('+ | Item: ' + itemObject.name + ' was added to the cart on ' + timestamp);
 	}
